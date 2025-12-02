@@ -1,12 +1,13 @@
 from pymemcache.client.base import Client  # type: ignore
 import json
 from typing import Dict, Any, Optional, List
+from config import MEMCACHED_HOST, MEMCACHED_PORT
 
 from backend_interface import BackendInterface
 
 
 class MemcachedBackend(BackendInterface):
-    def __init__(self, host: str = "localhost", port: int = 11211):
+    def __init__(self, host: str = MEMCACHED_HOST, port: int = MEMCACHED_PORT):
         self.client = Client((host, port))
 
     def insert_event(self, event_id: str, event: Dict[str, Any]) -> None:

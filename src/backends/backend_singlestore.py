@@ -1,16 +1,23 @@
 from singlestoredb import connection
 from typing import Dict, Any, List, Optional
 from backend_interface import BackendInterface
+from config import (
+    SINGLESTORE_HOST,
+    SINGLESTORE_PORT,
+    SINGLESTORE_USER,
+    SINGLESTORE_PASSWORD,
+    SINGLESTORE_DATABASE,
+)
 
 
 class SingleStoreBackend(BackendInterface):
     def __init__(
         self,
-        host: str = "localhost",
-        port: int = 3306,
-        user: str = "root",
-        password: str = "test",
-        database: str = "test",
+        host: str = SINGLESTORE_HOST,
+        port: int = SINGLESTORE_PORT,
+        user: str = SINGLESTORE_USER,
+        password: str = SINGLESTORE_PASSWORD,
+        database: str = SINGLESTORE_DATABASE,
     ):
         self.conn = connection.connect(
             host=host, port=port, user=user, password=password, database=database

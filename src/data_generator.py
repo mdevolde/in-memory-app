@@ -2,13 +2,12 @@ import time
 import random
 import uuid
 from typing import Dict, Any
+from config import DEFAULT_EVENT_TYPES, MAX_USER_ID
 
 
-EVENT_TYPES = ["login", "logout", "page_view", "purchase", "click"]
-
-
-def generate_event(user_id: int | None = None,
-                   event_type: str | None = None) -> Dict[str, Any]:
+def generate_event(
+    user_id: int | None = None, event_type: str | None = None
+) -> Dict[str, Any]:
     """
     Generates a simple and consistent event.
     Used in the CLI and in the benchmark.
@@ -19,8 +18,8 @@ def generate_event(user_id: int | None = None,
 
     event: Dict[str, Any] = {
         "event_id": uuid.uuid4().hex,
-        "user_id": user_id if user_id is not None else random.randint(1, 10000),
-        "event_type": event_type if event_type else random.choice(EVENT_TYPES),
+        "user_id": user_id if user_id is not None else random.randint(1, MAX_USER_ID),
+        "event_type": event_type if event_type else random.choice(DEFAULT_EVENT_TYPES),
         "timestamp": time.time(),
     }
 
