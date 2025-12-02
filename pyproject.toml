@@ -1,0 +1,10 @@
+[project]
+name = "in-memory-app"
+version = "0.1.0"
+description = "In memory app using SingleStore and Memcached."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mysql-connector-python>=9.5.0",
+    "pylibmc>=1.6.3",
+]
