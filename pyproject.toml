@@ -8,3 +8,6 @@ dependencies = [
     "pymemcache>=4.0.0",
     "singlestoredb>=1.16.4",
 ]
+
+[project.scripts]
+cli = "src.cli:main"
