@@ -49,6 +49,14 @@ def main():
         "--number", type=int, required=True, help="Number of events to generate"
     )
 
+    # --- Command: clear-data ---
+    clear_cmd = subparsers.add_parser("clear-data", help="Clear all data in backend")
+    clear_cmd.add_argument(
+        "--confirm",
+        action="store_true",
+        help="Confirm data clearance",
+    )
+
     args = parser.parse_args()
 
     # Initialize backend
@@ -75,6 +83,13 @@ def main():
         for event in events:
             add_event(backend, event)
         print(f"Generated {len(events)} events")
+
+    elif args.command == "clear-data":
+        if args.confirm:
+            backend.clear()
+            print("All data cleared from backend.")
+        else:
+            print("Data clearance not confirmed. Use --confirm to clear data.")
 
     else:
         parser.print_help()
