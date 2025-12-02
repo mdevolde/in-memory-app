@@ -2,11 +2,7 @@
 import argparse
 from backends.backend_memcache import MemcachedBackend
 from backends.backend_singlestore import SingleStoreBackend
-from service import (
-    add_event,
-    get_event_by_id,
-    get_user_events
-)
+from service import add_event, get_event_by_id, get_user_events
 from data_generator import generate_event, generate_events_batch
 
 
@@ -46,8 +42,12 @@ def main():
     user_cmd.add_argument("--user", type=int, required=True)
 
     # --- Command: generate-batch ---
-    batch_cmd = subparsers.add_parser("generate-batch", help="Generate a batch of events")
-    batch_cmd.add_argument("--number", type=int, required=True, help="Number of events to generate")
+    batch_cmd = subparsers.add_parser(
+        "generate-batch", help="Generate a batch of events"
+    )
+    batch_cmd.add_argument(
+        "--number", type=int, required=True, help="Number of events to generate"
+    )
 
     args = parser.parse_args()
 
@@ -56,10 +56,7 @@ def main():
 
     # Route to the selected command
     if args.command == "add-event":
-        event = generate_event(
-            user_id=args.user,
-            event_type=args.type
-        )
+        event = generate_event(user_id=args.user, event_type=args.type)
         add_event(backend, event)
         print("Event added:", event["event_id"])
 

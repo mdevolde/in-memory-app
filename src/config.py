@@ -19,4 +19,4 @@ SINGLESTORE_DATABASE = "test"
 # Application
 # -------------------------------------------------------------
 DEFAULT_EVENT_TYPES = ["login", "logout", "page_view", "purchase", "click"]
-MAX_USER_ID = 10_000 
+MAX_USER_ID = 10_000
