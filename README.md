@@ -20,6 +20,49 @@ Be sure to create the database "test" before running the application:
 docker exec -it singlestore memsql --user=root --password=test -e "CREATE DATABASE IF NOT EXISTS test;"
 ```
 
+### Run Postgres
+
+```bash
+docker run -d \
+  --name mypostgres \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=test \
+  -p 5432:5432 \
+  postgres:16
+```
+
+Don't forget to get the driver dependency for Postgres in your project.
+```bash
+cd ~/Documents/YCSB/lib
+wget https://jdbc.postgresql.org/download/postgresql-42.7.8.jar
+```
+
+Then, create the table in Postgres:
+
+```bash
+docker exec -it mypostgres psql -U postgres -d test
+```
+Then, in the psql shell, run:
+
+```sql
+CREATE TABLE IF NOT EXISTS usertable (
+  ycsb_key VARCHAR(255) PRIMARY KEY,
+  field0 TEXT,
+  field1 TEXT,
+  field2 TEXT,
+  field3 TEXT,
+  field4 TEXT,
+  field5 TEXT,
+  field6 TEXT,
+  field7 TEXT,
+  field8 TEXT,
+  field9 TEXT
+);
+
+EXIT;
+```
+
 ## Retrieve existing lines created by the application
 ### Retrieve existing events in Memcached
 
