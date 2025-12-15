@@ -323,14 +323,18 @@ This script runs comparative benchmarks across Memcached, SingleStore, and Postg
 #### Configuration
 
 Edit the following parameters in the script:
+- `YCSB_DIR`: The location at YCSB has been cloned (e.g. `"$HOME/Documents/YCSB"`)
+- `RESULTS_DIR`: The place where the results excel will be created (example: `$YCSB_DIR/results`)
 - `WORKLOADS`: Array of YCSB workloads to test (default: workloada, workloadc)
 - `RUNS`: Number of times to repeat each benchmark (default: 3)
 - `THREADS`: Number of concurrent threads (default: 10)
 - `RECORDCOUNT`: Number of records to load (default: 100000)
 - `OPERATIONCOUNT`: Number of operations per run (default: 100000)
-- `MEMCACHED_HOSTS`: Memcached server address
+- `MEMCACHED_HOSTS`: Memcached server address (default: 127.0.0.1:11211)
 - `JDBC_URL`: SingleStore connection string
 - `PG_URL`: PostgreSQL connection string
+- `PG_JAR`: The location of the PostgreSQL driver
+- `JDBC_JAR`: The location of the SingleStore driver
 
 #### Usage
 
@@ -352,11 +356,16 @@ This script performs scalability testing by varying dataset size and thread coun
 #### Configuration
 
 Edit the following parameters in the script:
+- `YCSB_DIR`: The location at YCSB has been cloned (e.g. `"$HOME/Documents/YCSB"`)
+- `RESULTS_DIR`: The place where the results excel will be created (example: `$YCSB_DIR/results`)
 - `WORKLOADS`: Array of YCSB workloads (default: workloada)
 - `RECORD_SIZES`: Array of dataset sizes to test (default: 10000, 100000, 1000000)
 - `THREADS_LIST`: Array of thread counts (default: 1, 5, 10, 20, 50)
 - `RUNS`: Number of repetitions per configuration (default: 3)
 - `OPERATIONCOUNT`: Fixed operation count (default: 100000)
+- `MEMCACHED_HOSTS`: Memcached server address (default: 127.0.0.1:11211)
+- `JDBC_URL`: SingleStore connection string
+- `JDBC_JAR`: The location of the SingleStore driver
 
 #### Usage
 
