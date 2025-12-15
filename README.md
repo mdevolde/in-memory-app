@@ -244,7 +244,7 @@ EXIT;
   -s
 ```
 
-#### SingleStore Benchmark (Workload A)
+#### SingleStore Benchmark (Workload A - Read/Update)
 
 ```bash
 ./bin/ycsb load jdbc \
@@ -265,7 +265,7 @@ EXIT;
   -s
 ```
 
-#### SingleStore Benchmark (Workload C)
+#### SingleStore Benchmark (Workload C - Read-only)
 
 ```bash
 ./bin/ycsb run jdbc \
