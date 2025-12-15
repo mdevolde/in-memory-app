@@ -156,7 +156,7 @@ cd ..
 mvn -pl jdbc -am clean package
 ```
 
-Create the table in SingleStore:
+Create the table in SingleStore (need having `mysql-client` installed):
 
 ```bash
 mysql --host=127.0.0.1 --port=3306 --user=root --password=test
@@ -335,7 +335,7 @@ Edit the following parameters in the script:
 #### Usage
 
 ```bash
-bash run_benchmarks.sh
+./run_benchmarks.sh
 ```
 
 #### What it does
@@ -361,7 +361,7 @@ Edit the following parameters in the script:
 #### Usage
 
 ```bash
-bash run_scalability.sh
+./run_scalability.sh
 ```
 
 #### What it does
